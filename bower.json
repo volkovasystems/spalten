@@ -1,0 +1,25 @@
+{
+  "name": "spalten",
+  "description": "Calculate partition using Golden Ratio.",
+  "main": "spalten.js",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "calculate-partition",
+    "partition",
+    "golden-ratio"
+  ],
+  "homepage": "https://github.com/volkovasystems/spalten",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "harden": "^0.2.1"
+  }
+}
