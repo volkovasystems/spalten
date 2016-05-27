@@ -68,7 +68,7 @@ var spalten = function spalten( count ){
 
 	return {
 		"pageSize": pageSize,
-		"pagecount": pageCount,
+		"pageCount": pageCount,
 		"factor": factor
 	};
 };
