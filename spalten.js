@@ -62,7 +62,7 @@ var spalten = function spalten( count ){
 	var factor = count / Math.sqrt( Math.pow( longerSegment, 2 ) +
 		Math.pow( shorterSegment, 2 ) );
 
-	var pageSize = Math.sqrt( count ) * factor;
+	var pageSize = Math.floor( Math.sqrt( count ) * factor );
 
 	var pageCount = Math.ceil( count / pageSize );
 
