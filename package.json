@@ -1,6 +1,6 @@
 {
   "name": "spalten",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Calculate partition using Golden Ratio.",
   "main": "spalten.js",
   "scripts": {
@@ -14,8 +14,8 @@
     "calculate-partition",
     "partition",
     "golden-ratio",
-	"pagination",
-	"spalten"
+    "pagination",
+    "spalten"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
   "license": "MIT",
@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/volkovasystems/spalten#readme",
   "dependencies": {
-    "harden": "^0.3.2"
+    "harden": "^0.3.3"
   }
 }
