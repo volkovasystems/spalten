@@ -1,6 +1,6 @@
 {
   "name": "spalten",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Calculate partition using Golden Ratio.",
   "main": "spalten.js",
   "scripts": {
@@ -13,7 +13,9 @@
   "keywords": [
     "calculate-partition",
     "partition",
-    "golden-ratio"
+    "golden-ratio",
+	"pagination",
+	"spalten"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
   "license": "MIT",

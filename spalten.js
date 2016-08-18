@@ -1,8 +1,9 @@
 "use strict";
 
-/*:
+/*;
 	@module-license:
 		The MIT License (MIT)
+		@mit-license
 
 		Copyright (@c) 2016 Richeve Siodina Bebedor
 		@email: richeve.bebedor@gmail.com
@@ -28,20 +29,41 @@
 
 	@module-configuration:
 		{
-			"packageName": "spalten",
-			"fileName": "spalten.js",
-			"moduleName": "spalten",
-			"authorName": "Richeve S. Bebedor",
-			"authorEMail": "richeve.bebedor@gmail.com",
-			"repository": "git@github.com:volkovasystems/spalten.git",
-			"testCase": "spalten-test.js",
-			"isGlobal": true
+			"package": "spalten",
+			"path": "spalten/spalten.js",
+			"file": "spalten.js",
+			"module": "spalten",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"repository": "https://github.com/volkovasystems/spalten.git",
+			"global": true
 		}
 	@end-module-configuration
 
 	@module-documentation:
+		This will return a default pagination object.
 
+		The object contains, the size, count and the factor determinant.
+
+		The initial factor is the partition factor, the difference with the factor determinant
+			is that, initial factor determines how the list will be partition.
+			Factor determinant determines what factor results to the partition of the list.
+
+		The partition factor balances how many will be listed and how long they can be processed.
+			This will be used to generate the factor determinant.
+
+		Factor determinant is used to generate the page size.
+
+		If the page size is generated it will be used to determine the page count.
+
+		The partition factor by default is the golden ratio number.
 	@end-module-documentation
+
+	@include:
+		{
+			"harden": "harden"
+		}
+	@end-include
 */
 
 if( typeof window == "undefined" ){
@@ -54,7 +76,28 @@ if( typeof window != "undefined" &&
 	throw new Error( "harden is not defined" );
 }
 
-var spalten = function spalten( count ){
+var spalten = function spalten( count, factor ){
+	/*;
+		@meta-configuration:
+			{
+				"count:required": "number",
+				"factor": "number"
+			}
+		@end-meta-configuration
+	*/
+
+	if( typeof count != "number" ){
+		throw new Error( "invalid count" );
+	}
+
+	factor = factor || spalten.PARTITION_FACTOR;
+
+	if( factor &&
+		typeof factor != "number" )
+	{
+		throw new Error( "invalid factor" );
+	}
+
 	var longerSegment = count / spalten.PARTITION_FACTOR;
 
 	var shorterSegment = count - longerSegment;
@@ -67,8 +110,8 @@ var spalten = function spalten( count ){
 	var pageCount = Math.ceil( count / pageSize );
 
 	return {
-		"pageSize": pageSize,
-		"pageCount": pageCount,
+		"size": pageSize,
+		"count": pageCount,
 		"factor": factor
 	};
 };
@@ -78,12 +121,4 @@ harden.bind( spalten )
 
 if( typeof module != "undefined" ){
 	module.exports = spalten;
-}
-
-if( typeof global != "undefined" ){
-	harden
-		.bind( spalten )( "globalize",
-			function globalize( ){
-				harden.bind( global )( "spalten", spalten );
-			} );
 }
