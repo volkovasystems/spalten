@@ -1,6 +1,6 @@
 {
   "name": "spalten",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Calculate partition using Golden Ratio.",
   "main": "spalten.js",
   "scripts": {
