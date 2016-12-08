@@ -34,6 +34,9 @@
 			"file": "spalten.js",
 			"module": "spalten",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/spalten.git",
 			"global": true
@@ -66,17 +69,10 @@
 	@end-include
 */
 
-if( typeof window == "undefined" ){
-	var harden = require( "harden" );
-}
+const harden = require( "harden" );
+const protype = require( "protype" );
 
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
-	throw new Error( "harden is not defined" );
-}
-
-var spalten = function spalten( count, factor ){
+const spalten = function spalten( count, factor ){
 	/*;
 		@meta-configuration:
 			{
@@ -86,28 +82,26 @@ var spalten = function spalten( count, factor ){
 		@end-meta-configuration
 	*/
 
-	if( typeof count != "number" ){
+	if( !protype( count, NUMBER ) ){
 		throw new Error( "invalid count" );
 	}
 
 	factor = factor || spalten.PARTITION_FACTOR;
 
-	if( factor &&
-		typeof factor != "number" )
-	{
+	if( factor && !protype( factor, NUMBER ) ){
 		throw new Error( "invalid factor" );
 	}
 
-	var longerSegment = count / spalten.PARTITION_FACTOR;
+	let longerSegment = count / spalten.PARTITION_FACTOR;
 
-	var shorterSegment = count - longerSegment;
+	let shorterSegment = count - longerSegment;
 
 	var factor = count / Math.sqrt( Math.pow( longerSegment, 2 ) +
 		Math.pow( shorterSegment, 2 ) );
 
-	var pageSize = Math.floor( Math.sqrt( count ) * factor );
+	let pageSize = Math.floor( Math.sqrt( count ) * factor );
 
-	var pageCount = Math.ceil( count / pageSize );
+	let pageCount = Math.ceil( count / pageSize );
 
 	return {
 		"size": pageSize,
@@ -119,6 +113,4 @@ var spalten = function spalten( count, factor ){
 harden.bind( spalten )
 	( "PARTITION_FACTOR", ( ( 1 + Math.sqrt( 5 ) ) / 2 ) );
 
-if( typeof module != "undefined" ){
-	module.exports = spalten;
-}
+module.exports = spalten;

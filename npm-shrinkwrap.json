@@ -1,0 +1,35 @@
+{
+  "name": "spalten",
+  "version": "0.2.0",
+  "dependencies": {
+    "harden": {
+      "version": "0.7.0",
+      "from": "harden@latest",
+      "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+    },
+    "protype": {
+      "version": "0.4.0",
+      "from": "protype@latest",
+      "resolved": "https://registry.npmjs.org/protype/-/protype-0.4.0.tgz",
+      "dependencies": {
+        "cemento": {
+          "version": "0.3.0",
+          "from": "cemento@latest",
+          "resolved": "https://registry.npmjs.org/cemento/-/cemento-0.3.0.tgz",
+          "dependencies": {
+            "harden": {
+              "version": "0.7.0",
+              "from": "harden@latest",
+              "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+            }
+          }
+        },
+        "harden": {
+          "version": "0.7.0",
+          "from": "harden@latest",
+          "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+        }
+      }
+    }
+  }
+}
