@@ -1,87 +1,87 @@
 "use strict";
 
 /*;
-	@module-license:
-		The MIT License (MIT)
-		@mit-license
-
-		Copyright (@c) 2017 Richeve Siodina Bebedor
-		@email: richeve.bebedor@gmail.com
-
-		Permission is hereby granted, free of charge, to any person obtaining a copy
-		of this software and associated documentation files (the "Software"), to deal
-		in the Software without restriction, including without limitation the rights
-		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-		copies of the Software, and to permit persons to whom the Software is
-		furnished to do so, subject to the following conditions:
-
-		The above copyright notice and this permission notice shall be included in all
-		copies or substantial portions of the Software.
-
-		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-		SOFTWARE.
-	@end-module-license
-
-	@module-configuration:
-		{
-			"package": "spalten",
-			"path": "spalten/spalten.js",
-			"file": "spalten.js",
-			"module": "spalten",
-			"author": "Richeve S. Bebedor",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
-			],
-			"eMail": "richeve.bebedor@gmail.com",
-			"repository": "https://github.com/volkovasystems/spalten.git",
-			"global": true
-		}
-	@end-module-configuration
-
-	@module-documentation:
-		This will return a default pagination object.
-
-		The object contains, the size, count and the factor determinant.
-
-		The initial factor is the partition factor, the difference with the factor determinant
-			is that, initial factor determines how the list will be partition.
-			Factor determinant determines what factor results to the partition of the list.
-
-		The partition factor balances how many will be listed and how long they can be processed.
-			This will be used to generate the factor determinant.
-
-		Factor determinant is used to generate the page size.
-
-		If the page size is generated it will be used to determine the page count.
-
-		The partition factor by default is the golden ratio number.
-	@end-module-documentation
-
-	@include:
-		{
-			"harden": "harden",
-			"protype": "protype"
-		}
-	@end-include
-*/
+              	@module-license:
+              		The MIT License (MIT)
+              		@mit-license
+              
+              		Copyright (@c) 2017 Richeve Siodina Bebedor
+              		@email: richeve.bebedor@gmail.com
+              
+              		Permission is hereby granted, free of charge, to any person obtaining a copy
+              		of this software and associated documentation files (the "Software"), to deal
+              		in the Software without restriction, including without limitation the rights
+              		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              		copies of the Software, and to permit persons to whom the Software is
+              		furnished to do so, subject to the following conditions:
+              
+              		The above copyright notice and this permission notice shall be included in all
+              		copies or substantial portions of the Software.
+              
+              		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+              		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+              		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+              		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+              		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+              		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+              		SOFTWARE.
+              	@end-module-license
+              
+              	@module-configuration:
+              		{
+              			"package": "spalten",
+              			"path": "spalten/spalten.js",
+              			"file": "spalten.js",
+              			"module": "spalten",
+              			"author": "Richeve S. Bebedor",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+              			],
+              			"eMail": "richeve.bebedor@gmail.com",
+              			"repository": "https://github.com/volkovasystems/spalten.git",
+              			"global": true
+              		}
+              	@end-module-configuration
+              
+              	@module-documentation:
+              		This will return a default pagination object.
+              
+              		The object contains, the size, count and the factor determinant.
+              
+              		The initial factor is the partition factor, the difference with the factor determinant
+              			is that, initial factor determines how the list will be partition.
+              			Factor determinant determines what factor results to the partition of the list.
+              
+              		The partition factor balances how many will be listed and how long they can be processed.
+              			This will be used to generate the factor determinant.
+              
+              		Factor determinant is used to generate the page size.
+              
+              		If the page size is generated it will be used to determine the page count.
+              
+              		The partition factor by default is the golden ratio number.
+              	@end-module-documentation
+              
+              	@include:
+              		{
+              			"harden": "harden",
+              			"protype": "protype"
+              		}
+              	@end-include
+              */
 
 var harden = require("harden");
 var protype = require("protype");
 
 var spalten = function spalten(count, factor) {
 	/*;
- 	@meta-configuration:
- 		{
- 			"count:required": "number",
- 			"factor": "number"
- 		}
- 	@end-meta-configuration
- */
+                                               	@meta-configuration:
+                                               		{
+                                               			"count:required": "number",
+                                               			"factor": "number"
+                                               		}
+                                               	@end-meta-configuration
+                                               */
 
 	if (!protype(count, NUMBER)) {
 		throw new Error("invalid count");
@@ -97,7 +97,8 @@ var spalten = function spalten(count, factor) {
 
 	var shorterSegment = count - longerSegment;
 
-	var factor = count / Math.sqrt(Math.pow(longerSegment, 2) + Math.pow(shorterSegment, 2));
+	var factor = count / Math.sqrt(Math.pow(longerSegment, 2) +
+	Math.pow(shorterSegment, 2));
 
 	var pageSize = Math.floor(Math.sqrt(count) * factor);
 
@@ -106,11 +107,13 @@ var spalten = function spalten(count, factor) {
 	return {
 		"size": pageSize,
 		"count": pageCount,
-		"factor": factor
-	};
+		"factor": factor };
+
 };
 
-harden.bind(spalten)("PARTITION_FACTOR", (1 + Math.sqrt(5)) / 2);
+harden.bind(spalten)(
+"PARTITION_FACTOR", (1 + Math.sqrt(5)) / 2);
 
 module.exports = spalten;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNwYWx0ZW4uanMiXSwibmFtZXMiOlsiaGFyZGVuIiwicmVxdWlyZSIsInByb3R5cGUiLCJzcGFsdGVuIiwiY291bnQiLCJmYWN0b3IiLCJOVU1CRVIiLCJFcnJvciIsIlBBUlRJVElPTl9GQUNUT1IiLCJsb25nZXJTZWdtZW50Iiwic2hvcnRlclNlZ21lbnQiLCJNYXRoIiwic3FydCIsInBvdyIsInBhZ2VTaXplIiwiZmxvb3IiLCJwYWdlQ291bnQiLCJjZWlsIiwiYmluZCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBc0VBLElBQU1BLFNBQVNDLFFBQVMsUUFBVCxDQUFmO0FBQ0EsSUFBTUMsVUFBVUQsUUFBUyxTQUFULENBQWhCOztBQUVBLElBQU1FLFVBQVUsU0FBU0EsT0FBVCxDQUFrQkMsS0FBbEIsRUFBeUJDLE1BQXpCLEVBQWlDO0FBQ2hEOzs7Ozs7Ozs7QUFTQSxLQUFJLENBQUNILFFBQVNFLEtBQVQsRUFBZ0JFLE1BQWhCLENBQUwsRUFBK0I7QUFDOUIsUUFBTSxJQUFJQyxLQUFKLENBQVcsZUFBWCxDQUFOO0FBQ0E7O0FBRURGLFVBQVNBLFVBQVVGLFFBQVFLLGdCQUEzQjs7QUFFQSxLQUFJSCxVQUFVLENBQUNILFFBQVNHLE1BQVQsRUFBaUJDLE1BQWpCLENBQWYsRUFBMEM7QUFDekMsUUFBTSxJQUFJQyxLQUFKLENBQVcsZ0JBQVgsQ0FBTjtBQUNBOztBQUVELEtBQUlFLGdCQUFnQkwsUUFBUUQsUUFBUUssZ0JBQXBDOztBQUVBLEtBQUlFLGlCQUFpQk4sUUFBUUssYUFBN0I7O0FBRUEsS0FBSUosU0FBU0QsUUFBUU8sS0FBS0MsSUFBTCxDQUFXRCxLQUFLRSxHQUFMLENBQVVKLGFBQVYsRUFBeUIsQ0FBekIsSUFDL0JFLEtBQUtFLEdBQUwsQ0FBVUgsY0FBVixFQUEwQixDQUExQixDQURvQixDQUFyQjs7QUFHQSxLQUFJSSxXQUFXSCxLQUFLSSxLQUFMLENBQVlKLEtBQUtDLElBQUwsQ0FBV1IsS0FBWCxJQUFxQkMsTUFBakMsQ0FBZjs7QUFFQSxLQUFJVyxZQUFZTCxLQUFLTSxJQUFMLENBQVdiLFFBQVFVLFFBQW5CLENBQWhCOztBQUVBLFFBQU87QUFDTixVQUFRQSxRQURGO0FBRU4sV0FBU0UsU0FGSDtBQUdOLFlBQVVYO0FBSEosRUFBUDtBQUtBLENBcENEOztBQXNDQUwsT0FBT2tCLElBQVAsQ0FBYWYsT0FBYixFQUNHLGtCQURILEVBQ3lCLENBQUUsSUFBSVEsS0FBS0MsSUFBTCxDQUFXLENBQVgsQ0FBTixJQUF5QixDQURsRDs7QUFHQU8sT0FBT0MsT0FBUCxHQUFpQmpCLE9BQWpCIiwiZmlsZSI6InNwYWx0ZW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJcInVzZSBzdHJpY3RcIjtcblxuLyo7XG5cdEBtb2R1bGUtbGljZW5zZTpcblx0XHRUaGUgTUlUIExpY2Vuc2UgKE1JVClcblx0XHRAbWl0LWxpY2Vuc2VcblxuXHRcdENvcHlyaWdodCAoQGMpIDIwMTcgUmljaGV2ZSBTaW9kaW5hIEJlYmVkb3Jcblx0XHRAZW1haWw6IHJpY2hldmUuYmViZWRvckBnbWFpbC5jb21cblxuXHRcdFBlcm1pc3Npb24gaXMgaGVyZWJ5IGdyYW50ZWQsIGZyZWUgb2YgY2hhcmdlLCB0byBhbnkgcGVyc29uIG9idGFpbmluZyBhIGNvcHlcblx0XHRvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSBcIlNvZnR3YXJlXCIpLCB0byBkZWFsXG5cdFx0aW4gdGhlIFNvZnR3YXJlIHdpdGhvdXQgcmVzdHJpY3Rpb24sIGluY2x1ZGluZyB3aXRob3V0IGxpbWl0YXRpb24gdGhlIHJpZ2h0c1xuXHRcdHRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGxcblx0XHRjb3BpZXMgb2YgdGhlIFNvZnR3YXJlLCBhbmQgdG8gcGVybWl0IHBlcnNvbnMgdG8gd2hvbSB0aGUgU29mdHdhcmUgaXNcblx0XHRmdXJuaXNoZWQgdG8gZG8gc28sIHN1YmplY3QgdG8gdGhlIGZvbGxvd2luZyBjb25kaXRpb25zOlxuXG5cdFx0VGhlIGFib3ZlIGNvcHlyaWdodCBub3RpY2UgYW5kIHRoaXMgcGVybWlzc2lvbiBub3RpY2Ugc2hhbGwgYmUgaW5jbHVkZWQgaW4gYWxsXG5cdFx0Y29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS5cblxuXHRcdFRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCBcIkFTIElTXCIsIFdJVEhPVVQgV0FSUkFOVFkgT0YgQU5ZIEtJTkQsIEVYUFJFU1MgT1Jcblx0XHRJTVBMSUVELCBJTkNMVURJTkcgQlVUIE5PVCBMSU1JVEVEIFRPIFRIRSBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWSxcblx0XHRGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEVcblx0XHRBVVRIT1JTIE9SIENPUFlSSUdIVCBIT0xERVJTIEJFIExJQUJMRSBGT1IgQU5ZIENMQUlNLCBEQU1BR0VTIE9SIE9USEVSXG5cdFx0TElBQklMSVRZLCBXSEVUSEVSIElOIEFOIEFDVElPTiBPRiBDT05UUkFDVCwgVE9SVCBPUiBPVEhFUldJU0UsIEFSSVNJTkcgRlJPTSxcblx0XHRPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRVxuXHRcdFNPRlRXQVJFLlxuXHRAZW5kLW1vZHVsZS1saWNlbnNlXG5cblx0QG1vZHVsZS1jb25maWd1cmF0aW9uOlxuXHRcdHtcblx0XHRcdFwicGFja2FnZVwiOiBcInNwYWx0ZW5cIixcblx0XHRcdFwicGF0aFwiOiBcInNwYWx0ZW4vc3BhbHRlbi5qc1wiLFxuXHRcdFx0XCJmaWxlXCI6IFwic3BhbHRlbi5qc1wiLFxuXHRcdFx0XCJtb2R1bGVcIjogXCJzcGFsdGVuXCIsXG5cdFx0XHRcImF1dGhvclwiOiBcIlJpY2hldmUgUy4gQmViZWRvclwiLFxuXHRcdFx0XCJjb250cmlidXRvcnNcIjogW1xuXHRcdFx0XHRcIkpvaG4gTGVub24gTWFnaGFub3kgPGpvaG5sZW5vbm1hZ2hhbm95QGdtYWlsLmNvbT5cIlxuXHRcdFx0XSxcblx0XHRcdFwiZU1haWxcIjogXCJyaWNoZXZlLmJlYmVkb3JAZ21haWwuY29tXCIsXG5cdFx0XHRcInJlcG9zaXRvcnlcIjogXCJodHRwczovL2dpdGh1Yi5jb20vdm9sa292YXN5c3RlbXMvc3BhbHRlbi5naXRcIixcblx0XHRcdFwiZ2xvYmFsXCI6IHRydWVcblx0XHR9XG5cdEBlbmQtbW9kdWxlLWNvbmZpZ3VyYXRpb25cblxuXHRAbW9kdWxlLWRvY3VtZW50YXRpb246XG5cdFx0VGhpcyB3aWxsIHJldHVybiBhIGRlZmF1bHQgcGFnaW5hdGlvbiBvYmplY3QuXG5cblx0XHRUaGUgb2JqZWN0IGNvbnRhaW5zLCB0aGUgc2l6ZSwgY291bnQgYW5kIHRoZSBmYWN0b3IgZGV0ZXJtaW5hbnQuXG5cblx0XHRUaGUgaW5pdGlhbCBmYWN0b3IgaXMgdGhlIHBhcnRpdGlvbiBmYWN0b3IsIHRoZSBkaWZmZXJlbmNlIHdpdGggdGhlIGZhY3RvciBkZXRlcm1pbmFudFxuXHRcdFx0aXMgdGhhdCwgaW5pdGlhbCBmYWN0b3IgZGV0ZXJtaW5lcyBob3cgdGhlIGxpc3Qgd2lsbCBiZSBwYXJ0aXRpb24uXG5cdFx0XHRGYWN0b3IgZGV0ZXJtaW5hbnQgZGV0ZXJtaW5lcyB3aGF0IGZhY3RvciByZXN1bHRzIHRvIHRoZSBwYXJ0aXRpb24gb2YgdGhlIGxpc3QuXG5cblx0XHRUaGUgcGFydGl0aW9uIGZhY3RvciBiYWxhbmNlcyBob3cgbWFueSB3aWxsIGJlIGxpc3RlZCBhbmQgaG93IGxvbmcgdGhleSBjYW4gYmUgcHJvY2Vzc2VkLlxuXHRcdFx0VGhpcyB3aWxsIGJlIHVzZWQgdG8gZ2VuZXJhdGUgdGhlIGZhY3RvciBkZXRlcm1pbmFudC5cblxuXHRcdEZhY3RvciBkZXRlcm1pbmFudCBpcyB1c2VkIHRvIGdlbmVyYXRlIHRoZSBwYWdlIHNpemUuXG5cblx0XHRJZiB0aGUgcGFnZSBzaXplIGlzIGdlbmVyYXRlZCBpdCB3aWxsIGJlIHVzZWQgdG8gZGV0ZXJtaW5lIHRoZSBwYWdlIGNvdW50LlxuXG5cdFx0VGhlIHBhcnRpdGlvbiBmYWN0b3IgYnkgZGVmYXVsdCBpcyB0aGUgZ29sZGVuIHJhdGlvIG51bWJlci5cblx0QGVuZC1tb2R1bGUtZG9jdW1lbnRhdGlvblxuXG5cdEBpbmNsdWRlOlxuXHRcdHtcblx0XHRcdFwiaGFyZGVuXCI6IFwiaGFyZGVuXCIsXG5cdFx0XHRcInByb3R5cGVcIjogXCJwcm90eXBlXCJcblx0XHR9XG5cdEBlbmQtaW5jbHVkZVxuKi9cblxuY29uc3QgaGFyZGVuID0gcmVxdWlyZSggXCJoYXJkZW5cIiApO1xuY29uc3QgcHJvdHlwZSA9IHJlcXVpcmUoIFwicHJvdHlwZVwiICk7XG5cbmNvbnN0IHNwYWx0ZW4gPSBmdW5jdGlvbiBzcGFsdGVuKCBjb3VudCwgZmFjdG9yICl7XG5cdC8qO1xuXHRcdEBtZXRhLWNvbmZpZ3VyYXRpb246XG5cdFx0XHR7XG5cdFx0XHRcdFwiY291bnQ6cmVxdWlyZWRcIjogXCJudW1iZXJcIixcblx0XHRcdFx0XCJmYWN0b3JcIjogXCJudW1iZXJcIlxuXHRcdFx0fVxuXHRcdEBlbmQtbWV0YS1jb25maWd1cmF0aW9uXG5cdCovXG5cblx0aWYoICFwcm90eXBlKCBjb3VudCwgTlVNQkVSICkgKXtcblx0XHR0aHJvdyBuZXcgRXJyb3IoIFwiaW52YWxpZCBjb3VudFwiICk7XG5cdH1cblxuXHRmYWN0b3IgPSBmYWN0b3IgfHwgc3BhbHRlbi5QQVJUSVRJT05fRkFDVE9SO1xuXG5cdGlmKCBmYWN0b3IgJiYgIXByb3R5cGUoIGZhY3RvciwgTlVNQkVSICkgKXtcblx0XHR0aHJvdyBuZXcgRXJyb3IoIFwiaW52YWxpZCBmYWN0b3JcIiApO1xuXHR9XG5cblx0bGV0IGxvbmdlclNlZ21lbnQgPSBjb3VudCAvIHNwYWx0ZW4uUEFSVElUSU9OX0ZBQ1RPUjtcblxuXHRsZXQgc2hvcnRlclNlZ21lbnQgPSBjb3VudCAtIGxvbmdlclNlZ21lbnQ7XG5cblx0dmFyIGZhY3RvciA9IGNvdW50IC8gTWF0aC5zcXJ0KCBNYXRoLnBvdyggbG9uZ2VyU2VnbWVudCwgMiApICtcblx0XHRNYXRoLnBvdyggc2hvcnRlclNlZ21lbnQsIDIgKSApO1xuXG5cdGxldCBwYWdlU2l6ZSA9IE1hdGguZmxvb3IoIE1hdGguc3FydCggY291bnQgKSAqIGZhY3RvciApO1xuXG5cdGxldCBwYWdlQ291bnQgPSBNYXRoLmNlaWwoIGNvdW50IC8gcGFnZVNpemUgKTtcblxuXHRyZXR1cm4ge1xuXHRcdFwic2l6ZVwiOiBwYWdlU2l6ZSxcblx0XHRcImNvdW50XCI6IHBhZ2VDb3VudCxcblx0XHRcImZhY3RvclwiOiBmYWN0b3Jcblx0fTtcbn07XG5cbmhhcmRlbi5iaW5kKCBzcGFsdGVuIClcblx0KCBcIlBBUlRJVElPTl9GQUNUT1JcIiwgKCAoIDEgKyBNYXRoLnNxcnQoIDUgKSApIC8gMiApICk7XG5cbm1vZHVsZS5leHBvcnRzID0gc3BhbHRlbjtcbiJdfQ==
+
+//# sourceMappingURL=spalten.support.js.map
