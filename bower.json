@@ -1,8 +1,9 @@
 {
   "name": "spalten",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Calculate partition using Golden Ratio.",
   "main": "spalten.deploy.js",
+  "support": "spalten.support.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
@@ -24,7 +25,7 @@
     "tests"
   ],
   "dependencies": {
-    "harden": "^0.14.0",
-    "protype": "^0.11.0"
+    "harden": "^0.16.0",
+    "protype": "^0.17.0"
   }
 }
