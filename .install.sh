@@ -14,4 +14,5 @@ webpack \
 bower install \
 harden \
 protype \
---save
+--save \
+--force-latest
