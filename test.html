@@ -1,8 +1,28 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./spalten.deploy.js">
-		</script>
+		<title>spalten unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./spalten.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "spalten unit test", function( assert ) {
+
+				assert.equal( typeof spalten( 4, 2 ) == "object", true, "should be true" );
+
+				assert.deepEqual( spalten( 5, 2 ), { "size": 3, "count": 2, "factor": 1.3763819204711736 }, "should be deeply equal" );
+				
+			} );
+		</script>
+	</body>
 </html>
