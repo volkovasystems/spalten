@@ -1,7 +1,6 @@
 yarn add \
 babel-runtime \
 harden \
-protype \
 --save && \
 yarn add \
 babel-cli \
@@ -13,6 +12,5 @@ webpack \
 --dev && \
 bower install \
 harden \
-protype \
 --save \
 --force-latest

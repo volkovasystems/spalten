@@ -1,47 +1,49 @@
 {
-  "name": "spalten",
-  "version": "0.12.0",
-  "description": "Calculate partition using Golden Ratio.",
-  "main": "spalten.js",
-  "support": "spalten.support.js",
-  "deploy": "spalten.deploy.js",
-  "browser": "spalten.deploy.js",
-  "scripts": {
-    "build": "babel spalten.js --out-file spalten.support.js --source-maps && webpack --progress --display-modules",
-    "test": "mocha spalten-test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/volkovasystems/spalten.git"
-  },
-  "keywords": [
-    "calculate-partition",
-    "partition",
-    "golden-ratio",
-    "pagination",
-    "spalten"
-  ],
-  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-  "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volkovasystems/spalten/issues"
-  },
-  "homepage": "https://github.com/volkovasystems/spalten#readme",
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "harden": "^0.22.0",
-    "protype": "^0.22.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "source-map-loader": "^0.2.1",
-    "webpack": "^3.0.0"
-  }
+	"name": "spalten",
+	"version": "0.13.0",
+	"description": "Calculate partition using Golden Ratio.",
+	"main": "spalten.js",
+	"support": "spalten.support.js",
+	"deploy": "spalten.deploy.js",
+	"browser": "spalten.deploy.js",
+	"scripts": {
+		"pristine": "rsetmod clean && flxc execute ./.install.sh",
+		"clear": "rsetmod clean --clear",
+		"build": "babel spalten.js --out-file spalten.support.js --source-maps && webpack --progress --display-modules",
+		"pretest": "npm run clear && npm run build",
+		"test": "node spalten-test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/volkovasystems/spalten.git"
+	},
+	"keywords": [
+		"calculate-partition",
+		"partition",
+		"golden-ratio",
+		"pagination",
+		"spalten"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"contributors": [
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystems/spalten/issues"
+	},
+	"homepage": "https://github.com/volkovasystems/spalten#readme",
+	"dependencies": {
+		"babel-runtime": "^6.25.0",
+		"harden": "^0.23.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.24.1",
+		"babel-core": "^6.25.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-latest": "^6.24.1",
+		"source-map-loader": "^0.2.1",
+		"webpack": "^3.5.4"
+	}
 }
