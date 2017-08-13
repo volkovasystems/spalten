@@ -66,13 +66,11 @@
 	@include:
 		{
 			"harden": "harden",
-			"protype": "protype"
 		}
 	@end-include
 */
 
 const harden = require( "harden" );
-const protype = require( "protype" );
 
 const spalten = function spalten( count, factor ){
 	/*;
@@ -84,13 +82,13 @@ const spalten = function spalten( count, factor ){
 		@end-meta-configuration
 	*/
 
-	if( !protype( count, NUMBER ) ){
+	if( typeof count != "number" ){
 		throw new Error( "invalid count" );
 	}
 
 	factor = factor || spalten.PARTITION_FACTOR;
 
-	if( factor && !protype( factor, NUMBER ) ){
+	if( factor && typeof factor != "number" ){
 		throw new Error( "invalid factor" );
 	}
 
