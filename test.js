@@ -66,6 +66,18 @@ const spalten = require( "./spalten.js" );
 
 describe( "spalten", ( ) => {
 
+	describe( "`spalten( 5, 2 )`", ( ) => {
+
+		it( "should return object type", ( ) => {
+			assert.equal( typeof spalten( 4, 2 ), "object" );
+		} );
+
+		it( "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }", ( ) => {
+			assert.deepEqual( spalten( 5, 2 ), { "size": 3, "count": 2, "factor": 1.3763819204711736 } );
+		} );
+
+	} );
+
 } );
 
 //: @end-server

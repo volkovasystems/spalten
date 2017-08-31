@@ -1,0 +1,107 @@
+{
+	"state": {
+		"passed": 2,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-31T08:37:47.189Z",
+	"end": "2017-08-31T08:38:29.573Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "spalten",
+			"duration": 0,
+			"start": "2017-08-31T08:38:29.241Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "spalten",
+			"duration": 153,
+			"start": "2017-08-31T08:38:29.242Z",
+			"end": "2017-08-31T08:38:29.395Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-31T08:38:29.243Z",
+					"end": "2017-08-31T08:38:29.244Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "spalten",
+					"associatedTest": "should return object type"
+				},
+				{
+					"start": "2017-08-31T08:38:29.340Z",
+					"end": "2017-08-31T08:38:29.340Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "spalten",
+					"associatedTest": "should return object type"
+				},
+				{
+					"start": "2017-08-31T08:38:29.341Z",
+					"end": "2017-08-31T08:38:29.341Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "spalten",
+					"associatedTest": "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }"
+				},
+				{
+					"start": "2017-08-31T08:38:29.394Z",
+					"end": "2017-08-31T08:38:29.394Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "spalten",
+					"associatedTest": "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }"
+				},
+				{
+					"start": "2017-08-31T08:38:29.395Z",
+					"end": "2017-08-31T08:38:29.395Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "spalten"
+				}
+			]
+		},
+		{
+			"name": "`spalten( 5, 2 )`",
+			"duration": 152,
+			"start": "2017-08-31T08:38:29.242Z",
+			"end": "2017-08-31T08:38:29.394Z",
+			"tests": [
+				{
+					"name": "should return object type",
+					"start": "2017-08-31T08:38:29.243Z",
+					"end": "2017-08-31T08:38:29.340Z",
+					"duration": 97,
+					"state": "pass"
+				},
+				{
+					"name": "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }",
+					"start": "2017-08-31T08:38:29.341Z",
+					"end": "2017-08-31T08:38:29.394Z",
+					"duration": 53,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

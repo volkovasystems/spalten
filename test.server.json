@@ -1,16 +1,46 @@
 {
-  "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-31T05:12:52.691Z",
-    "end": "2017-08-31T05:12:52.692Z",
-    "duration": 1
-  },
-  "tests": [],
-  "pending": [],
-  "failures": [],
-  "passes": []
+	"stats": {
+		"suites": 2,
+		"tests": 2,
+		"passes": 2,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-31T08:37:45.906Z",
+		"end": "2017-08-31T08:37:45.914Z",
+		"duration": 8
+	},
+	"tests": [
+		{
+			"title": "should return object type",
+			"fullTitle": "spalten `spalten( 5, 2 )` should return object type",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }",
+			"fullTitle": "spalten `spalten( 5, 2 )` should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should return object type",
+			"fullTitle": "spalten `spalten( 5, 2 )` should return object type",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }",
+			"fullTitle": "spalten `spalten( 5, 2 )` should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }

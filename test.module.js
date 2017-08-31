@@ -70,6 +70,18 @@ const path = require( "path" );
 
 describe( "spalten", ( ) => {
 
+	describe( "`spalten( 5, 2 )`", ( ) => {
+
+		it( "should return object type", ( ) => {
+			assert.equal( typeof spalten( 4, 2 ), "object" );
+		} );
+
+		it( "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }", ( ) => {
+			assert.deepEqual( spalten( 5, 2 ), { "size": 3, "count": 2, "factor": 1.3763819204711736 } );
+		} );
+
+	} );
+
 } );
 
 //: @end-server
@@ -79,6 +91,18 @@ describe( "spalten", ( ) => {
 
 describe( "spalten", ( ) => {
 
+	describe( "`spalten( 5, 2 )`", ( ) => {
+
+		it( "should return object type", ( ) => {
+			assert.equal( typeof spalten( 4, 2 ), "object" );
+		} );
+
+		it( "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }", ( ) => {
+			assert.deepEqual( spalten( 5, 2 ), { "size": 3, "count": 2, "factor": 1.3763819204711736 } );
+		} );
+
+	} );
+
 } );
 
 //: @end-client
@@ -87,6 +111,40 @@ describe( "spalten", ( ) => {
 //: @bridge:
 
 describe( "spalten", ( ) => {
+
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
+
+	describe( "`spalten( 5, 2 )`", ( ) => {
+
+		it( "should return object type", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return typeof spalten( 4, 2 );
+				}
+
+			).value;
+			//: @end-ignore
+			assert.equal( result, "object" );
+
+		} );
+
+		it( "should be equal to { 'size': 3, 'count': 2, 'factor': 1.3763819204711736 }", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return JSON.stringify( spalten( 5, 2 ) );
+				}
+
+			).value;
+			//: @end-ignore
+			assert.deepEqual( JSON.parse( result ), { "size": 3, "count": 2, "factor": 1.3763819204711736 } );
+
+		} );
+
+	} );
 
 } );
 
