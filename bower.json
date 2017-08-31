@@ -1,31 +1,28 @@
 {
-  "name": "spalten",
-  "version": "0.13.0",
-  "description": "Calculate partition using Golden Ratio.",
-  "main": "spalten.deploy.js",
-  "support": "spalten.support.js",
-  "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "calculate-partition",
-    "partition",
-    "golden-ratio",
-    "pagination",
-    "spalten"
-  ],
-  "homepage": "https://github.com/volkovasystems/spalten",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "harden": "^0.23.0"
-  }
+	"name": "spalten",
+	"version": "0.13.0",
+	"description": "Calculate partition using Golden Ratio.",
+	"main": "spalten.deploy.js",
+	"support": "spalten.support.js",
+	"authors": [
+		"Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"keywords": [
+		"calculate-partition",
+		"partition",
+		"golden-ratio",
+		"pagination",
+		"spalten"
+	],
+	"homepage": "https://github.com/volkovasystems/spalten",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
 }
